@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+.pt-100{
+    padding-top: 100px;
+}
+
+.navbar {
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.nav-container {
+    z-index: 2;
+}
+
+.article-cards {
+    margin: 10px 15px 10px 0px;
+    width: 18rem;
+}
+
+.card-container {
+    display: inline-block;
+    width: auto;
+    text-align: left;
+}

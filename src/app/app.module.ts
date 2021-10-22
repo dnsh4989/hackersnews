@@ -5,8 +5,8 @@ import { StoreModule } from '@ngrx/store';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PubnubService } from './services/pubnub.service';
-import { articlesReducer } from './reducers/article.reducer';
-import { loadingReducer } from './reducers/loading.reducer';
+import { articlesReducer } from './store/reducers/article.reducer';
+import { loadingReducer } from './store/reducers/loading.reducer';
 import { BlockUIModule } from 'ng-block-ui';
 
 @NgModule({

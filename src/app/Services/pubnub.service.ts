@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { PubNubAngular } from 'pubnub-angular2';
 import { Store } from '@ngrx/store';
-import { loadArticles } from '../actions/article.actions';
-import { changeStatus } from '../actions/loading.action';
-import { Subscription, timer } from 'rxjs';
+import { loadArticles } from '../store/actions/article.actions';
+import { changeStatus } from '../store/actions/loading.action';
+import { timer } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',

@@ -1,7 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
-import { Article } from '../models/article.model';
+import { Article } from '../../models/article.model';
 import { loadArticles, resetArticles } from '../actions/article.actions';
-import { ArticleList } from '../models/article-list.model';
+import { ArticleList } from '../../models/article-list.model';
 
 const initialArticles: Article[] | [] = [];
 

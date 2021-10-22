@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { timer } from 'rxjs';
 import { PubnubService } from 'src/app/services/pubnub.service';
-import { resetArticles } from 'src/app/actions/article.actions';
+import { resetArticles } from 'src/app/store/actions/article.actions';
 import { Store } from '@ngrx/store';
 
 @Component({

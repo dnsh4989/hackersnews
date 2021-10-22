@@ -1,12 +1,11 @@
 <div class="card article-cards text-left">
+  <div class="card-header">Featured</div>
   <div class="card-body">
-    <h5 class="card-title">{{article.title}}</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Rank: {{article.rank}}</h6>
+    <h5 class="card-title">{{ article.title }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">Rank: {{ article.rank }}</h6>
+    <h6 class="card-subtitle mb-2 text-muted">Country: USA</h6>
+    <a [href]="article.comments" class="card-link">Comment</a>
+    <a [href]="article.link" class="card-link">View Full Article</a>
   </div>
-  <div class="card-body">
-    <a [href]="article.comments" class="card-link">{{article.comments}}</a>
-  </div>
-  <div class="card-body">
-    <a [href]="article.link" class="card-link">{{article.link}}</a>
-  </div>
+  <div class="card-footer text-muted">Published by Hacker'S NewS</div>
 </div>

@@ -2,8 +2,9 @@ import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { AppState } from '../../app-state';
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
-import { Subscription, timer } from 'rxjs';
+import { ReplaySubject, Subscription, timer } from 'rxjs';
 import { PubnubService } from '../../services/pubnub.service';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -16,6 +17,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   private loading$ = this.store.pipe(select((state) => state.loading));
   private isLoading = false;
   private subscription: Subscription | undefined;
+  private destroyed$: ReplaySubject<boolean> = new ReplaySubject(1);
 
   constructor(
     public store: Store<AppState>,
@@ -24,10 +26,14 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.listenPubnub();
-    this.loading$.subscribe((res) => this.loadingHandler(res));
+    this.loading$
+      .pipe(takeUntil(this.destroyed$))
+      .subscribe((res) => this.loadingHandler(res));
   }
 
   ngOnDestroy() {
+    this.destroyed$.next(true);
+    this.destroyed$.complete();
     this.subscription?.unsubscribe();
   }
 
@@ -59,8 +65,10 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   listenPubnub() {
     this.pubnubService.start();
-    timer(30000).subscribe((val) => {
-      this.pubnubService.stop();
-    });
+    this.subscription = timer(30000)
+      .pipe(takeUntil(this.destroyed$))
+      .subscribe((val) => {
+        this.pubnubService.stop();
+      });
   }
 }

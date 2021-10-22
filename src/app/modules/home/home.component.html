@@ -2,6 +2,7 @@
   <block-ui>
     <app-navbar [count]="(articles$ | async)?.length"></app-navbar>
     <div class="container text-center pt-100">
+      <app-refresh *ngIf="(articles$ | async)?.length"></app-refresh>
       <app-card
         *ngFor="let article of articles$ | async"
         [article]="article"

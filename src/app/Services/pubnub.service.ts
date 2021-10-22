@@ -12,7 +12,6 @@ export class PubnubService {
   private readonly pubnub: PubNubAngular;
   private channel = 'hacker-news';
   private key = 'sub-c-c00db4fc-a1e7-11e6-8bfd-0619f8945a4f';
-  private subscription: Subscription | undefined;
 
   constructor(public store: Store) {
     this.pubnub = new PubNubAngular();
@@ -49,7 +48,7 @@ export class PubnubService {
 
   listenPubnub() {
     this.start();
-    this.subscription = timer(30000).subscribe((val) => {
+    timer(30000).subscribe((val) => {
       this.stop();
     });
   }

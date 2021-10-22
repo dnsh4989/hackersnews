@@ -59,7 +59,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   listenPubnub() {
     this.pubnubService.start();
-    this.subscription = timer(30000).subscribe((val) => {
+    timer(30000).subscribe((val) => {
       this.pubnubService.stop();
     });
   }

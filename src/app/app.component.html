@@ -1,10 +1,1 @@
-<block-ui>
-  <app-navbar [count]="(articles$ | async)?.length"></app-navbar>
-  <div class="container text-center pt-100">
-    <app-card
-      *ngFor="let article of (articles$ | async)"
-      [article]="article"
-      class="card-container">
-    </app-card>
-  </div>
-</block-ui>
+<router-outlet></router-outlet>

@@ -1,7 +1,7 @@
-import { createAction, props } from "@ngrx/store";
-import { Article } from "../Models/article.model";
+import { createAction, props } from '@ngrx/store';
+import { Article } from '../models/article.model';
 
 export const loadArticles = createAction(
-    '[Article] Load Articles',
-    props<{articles: Article[]}>()
+  '[Article] Load Articles',
+  props<{ articles: Article[] }>()
 );

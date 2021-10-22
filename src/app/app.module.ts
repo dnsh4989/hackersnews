@@ -4,29 +4,23 @@ import { PubNubAngular } from 'pubnub-angular2';
 import { StoreModule } from '@ngrx/store';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CardComponent } from './Components/Card/card.component';
-import { NavbarComponent } from './Components/Navbar/navbar.component';
-import { PubnubService } from './Services/pubnub.service';
-import { articlesReducer } from './Reducers/article.reducer';
-import { loadingReducer } from './Reducers/loading.reducer';
+import { PubnubService } from './services/pubnub.service';
+import { articlesReducer } from './reducers/article.reducer';
+import { loadingReducer } from './reducers/loading.reducer';
 import { BlockUIModule } from 'ng-block-ui';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    CardComponent
-  ],
+  declarations: [AppComponent],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     StoreModule.forRoot({
       articles: articlesReducer,
-      loading: loadingReducer
+      loading: loadingReducer,
     }),
-    BlockUIModule.forRoot()
+    BlockUIModule.forRoot(),
   ],
   providers: [PubNubAngular, PubnubService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

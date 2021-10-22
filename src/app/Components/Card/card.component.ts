@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Article } from 'src/app/Models/article.model';
+import { Article } from 'src/app/models/article.model';
 
 @Component({
   selector: 'app-card',
@@ -7,19 +7,14 @@ import { Article } from 'src/app/Models/article.model';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent implements OnInit {
-
   @Input() article: Article = {
     rank: 0,
-    title: "",
-    link: "",
-    comments: "",
+    title: '',
+    link: '',
+    comments: '',
   };
 
-  constructor() {
-    
-  }
+  constructor() {}
 
-  ngOnInit() {
-    
-  }
+  ngOnInit() {}
 }
